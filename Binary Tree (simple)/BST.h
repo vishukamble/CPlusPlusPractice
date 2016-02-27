@@ -7,6 +7,8 @@ public:
     BST();
     void addLeaf(int data);
     void printInOrder();
+    int returnRootData();
+    void printChildren(int data);
 
 private:
     struct node //base of tress. one to hold value 2 pointers to point
@@ -20,6 +22,9 @@ private:
     node* createLeaf(int data);
     void addLeafPrivate(int data, node* nodePtr);
     void printInOrderPrivate(node* nodePtr);
+    node* returnNode(int data);
+    node* returnNodePrivate(int data, node* nodePtr);
+
 };
 
 #endif

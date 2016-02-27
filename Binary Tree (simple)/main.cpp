@@ -26,8 +26,18 @@ int main()
         myTree.addLeaf(TreeKeys[i]);
     }
 
-    cout<<"Printing the tree inorder\After adding numbers"<<endl;
+    cout<<"Printing the tree inorder\nAfter adding numbers"<<endl;
     myTree.printInOrder();
+
+    cout<<"\n\nPrint Children"<<endl;
+   // myTree.printChildren(TreeKeys[5]);
+   // myTree.printChildren(myTree.returnRootData());
+
+    for(int i=0; i<16; i++)
+    {
+        myTree.printChildren(TreeKeys[i]);
+        cout<<endl;
+    }
 
     return 0;
 }

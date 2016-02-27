@@ -78,3 +78,65 @@ using namespace std;
  {
      printInOrderPrivate(root); //call the private function
  }
+
+ BST::node* BST::returnNodePrivate(int data, node* nodePtr) //take data and pointer
+ {
+     if(nodePtr != NULL) //if pointer exists
+     {
+        if(nodePtr->data == data) //check if data we're looking is present in the current pointer
+            return nodePtr; //if it is, return that pointer
+        else //if it is not look left and right
+        {
+            if(data < nodePtr->data) //data is on left side since it is less that current pointer's data
+            {
+                return returnNodePrivate(data, nodePtr->left); //recursively call function until we find the data
+            } else
+            {
+                return returnNodePrivate(data, nodePtr->right); //recursively call function until we find the data
+            }
+        }
+     } else
+     {
+         return NULL; //if nodePtr is null, return null
+     }
+
+ }
+
+ BST::node* BST::returnNode(int data) //public function to access private members
+ {
+     return returnNodePrivate(data, root); //send data and root to private node function that has access to private members
+ }
+
+ int  BST::returnRootData() //return root data
+ {
+     if(root != NULL)
+     {
+        return root->data;
+     } else
+     {
+         return -1;
+     }
+ }
+
+ void BST::printChildren(int data)
+ {
+    node* nodePtr = returnNode(data);   //to check if the data is in out tree.
+    //cout<<"Node ptr = "<<nodePtr<<endl; //for debugging
+    if(nodePtr != NULL)  //if data is part of tree, search it
+    {
+        cout<<"Parent node= "<<nodePtr->data<<endl; //display parent node
+        if(nodePtr->left == NULL) //if no child of parent
+            cout<<"NULL"<<endl;
+        else
+            cout<<"Left child: "<<nodePtr->left->data<<endl; //print left child
+
+        if(nodePtr->right == NULL) //if no right child
+            cout<<"NULL"<<endl;
+        else
+            cout<<"Right child: "<<nodePtr->right->data<<endl; //print right child
+    } else
+    {
+        cout<<"Data: "<<data<<" is not in the tree!\n"; //if nodePtr is null means data is not present in tree
+    }
+ }
+
