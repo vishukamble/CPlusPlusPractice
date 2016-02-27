@@ -17,6 +17,7 @@ int main()
 {
     int TreeKeys[16] = {50, 76, 21, 4, 32, 64, 15, 52, 14, 100, 83, 2, 3, 70, 87, 80};
     BST myTree;
+    int opt = 0;
 
     cout<<"Printing the tree inorder\nBefore adding numbers"<<endl;
     myTree.printInOrder();
@@ -33,11 +34,27 @@ int main()
    // myTree.printChildren(TreeKeys[5]);
    // myTree.printChildren(myTree.returnRootData());
 
-    for(int i=0; i<16; i++)
+    /*for(int i=0; i<16; i++)
     {
         myTree.printChildren(TreeKeys[i]);
         cout<<endl;
+    } */
+    cout<< "Smallest value in tree is: " << myTree.findSmallestData() << endl;
+
+    cout<<"\nEnter value to delete and enter -1 to stop "<<endl;;
+    while(opt!=-1)
+    {
+        cout<<"Delete node!\n";
+        cin>>opt;
+        if(opt != -1)
+        {
+            cout<<endl;
+            myTree.removeNode(opt);
+            myTree.printInOrder();
+            cout<<endl;
+        }
     }
+
 
     return 0;
 }

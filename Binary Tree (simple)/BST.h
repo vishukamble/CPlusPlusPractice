@@ -9,6 +9,9 @@ public:
     void printInOrder();
     int returnRootData();
     void printChildren(int data);
+    int findSmallestData();
+    void removeRootMatch();
+    void removeNode(int data);
 
 private:
     struct node //base of tress. one to hold value 2 pointers to point
@@ -24,7 +27,9 @@ private:
     void printInOrderPrivate(node* nodePtr);
     node* returnNode(int data);
     node* returnNodePrivate(int data, node* nodePtr);
-
+    int findSmallestPrivate(node* nodePtr);
+    void removeNodePrivate(int data, node* parent);
+    void removeMatch(node* parent, node* match, bool);
 };
 
 #endif

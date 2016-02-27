@@ -9,6 +9,8 @@ using namespace std;
      root = NULL; //new tree. Make sure root is null
  }
 
+   /*-------------------Creating tree and adding members---------------------*/
+
  BST::node* BST::createLeaf(int data)
  {
      node* n = new node; //creating a new node
@@ -54,6 +56,8 @@ using namespace std;
     addLeafPrivate(data, root); //send data and node to private function (which has access to private variables)
  }
 
+  /*-------------------Printing the tree inOrder---------------------*/
+
  void BST::printInOrderPrivate(node* nodePtr) //printing the tree
  {
     if(root != NULL) //if tree is not empty
@@ -79,6 +83,8 @@ using namespace std;
      printInOrderPrivate(root); //call the private function
  }
 
+  /*-------------------Return Node to help us check if data exists in tree---------------------*/
+
  BST::node* BST::returnNodePrivate(int data, node* nodePtr) //take data and pointer
  {
      if(nodePtr != NULL) //if pointer exists
@@ -99,8 +105,8 @@ using namespace std;
      {
          return NULL; //if nodePtr is null, return null
      }
-
  }
+
 
  BST::node* BST::returnNode(int data) //public function to access private members
  {
@@ -117,6 +123,8 @@ using namespace std;
          return -1;
      }
  }
+
+  /*-------------------Printing children---------------------*/
 
  void BST::printChildren(int data)
  {
@@ -140,3 +148,158 @@ using namespace std;
     }
  }
 
+ /*-------------------Find smallest to help us delete parent node---------------------*/
+
+int BST::findSmallestPrivate(node* nodePtr)
+{
+    if(root == NULL)
+    {
+        cout<<"Tree is empty\n"<<endl;
+        return -1;
+    } else
+    {
+        if(nodePtr->left != NULL)
+            return findSmallestPrivate(nodePtr->left);
+        else
+            return nodePtr->data;
+    }
+}
+
+int BST::findSmallestData()
+{
+    return findSmallestPrivate(root);
+}
+
+ /*-------------------Remove parent node-------------------*/
+
+void BST::removeNodePrivate(int data, node* parent)
+{
+    if(root != NULL)
+    {
+        if (root->data == data)
+        {
+            removeRootMatch();
+        } else
+        {
+            if(data < parent->data && parent->left != NULL)
+            {
+                parent->left->data == data ?
+                removeMatch(parent, parent->left, true) :
+                removeNodePrivate(data, parent->left);
+            } else if(data > parent->data && parent->right != NULL)
+            {
+                parent->right->data == data ?
+                removeMatch(parent, parent->right, false) :
+                removeNodePrivate(data, parent->right);
+            } else
+            {
+                cout<<"Data: "<<data<<" was not in the key!\n";
+            }
+        }
+    } else
+    {
+        cout<<"Tree is empty!\n";
+    }
+}
+
+void BST::removeNode(int data)
+{
+    return removeNodePrivate(data, root);
+}
+
+/* ------------------- Removing nodes ------------------- */
+void BST::removeRootMatch()
+{
+    if(root != NULL)
+    {
+        node* delPtr = root;
+        int rootData = root->data;
+        int smallestInRightSide;
+
+        //case where root has no child
+        if(root->left == NULL && root->right == NULL)
+        {
+            root = NULL;
+            delete delPtr;
+        }
+        //case where root has one child (right one)
+        else if(root->left == NULL && root->right != NULL)
+        {
+            root = root->right;
+            delPtr->right = NULL;
+            delete delPtr;
+            cout<<"Root node with data: "<<root->data<<" was deleted ";
+            cout<<"New root contains data: "<<root->data <<endl;
+        }
+        //case where root has one child (left one)
+        else if(root->right == NULL && root->left != NULL)
+        {
+            root = root->left;
+            delPtr->left = NULL;
+            delete delPtr;
+            cout<<"Root node with data: "<<root->data<<" was deleted ";
+            cout<<"New root contains data: "<<root->data <<endl;
+        }
+        //case where root has two children
+        else
+        {
+            smallestInRightSide = findSmallestPrivate(root->right);
+            removeNodePrivate(smallestInRightSide, root);
+            root->data = smallestInRightSide;
+            cout<<"Root data containing "<<rootData<<" was overwritten by "<<root->data<<endl;
+        }
+
+    } else
+    {
+        cout<<"Cannot remove root. The tree is empty\n";
+    }
+}
+
+
+
+void BST::removeMatch(node* parent, node* match, bool left)
+{
+    if(root != NULL)
+    {
+        node* delPtr;
+        int matchData = match->data;
+        int smallestInRightSide;
+
+        //case parent has no child
+        if(match->left == NULL && match->right == NULL)
+        {
+            delPtr = match;
+            (left = true) ? parent->left = NULL : parent->right = NULL;
+            delete delPtr;
+            cout<<"Node containing data: "<<matchData<<" was removed!\n\n";
+        }
+        //case parent has 1 child right one
+        else if(match->left == NULL && match->right != NULL)
+        {
+            left == true ? parent->left = match->right : parent->right = match->right;
+            match->right = NULL;
+            delPtr = match;
+            delete delPtr;
+            cout<<"The node containing data: "<<matchData<<" was deleted!\n\n";
+        }
+        //case parent has 1 child left one
+        else if(match->left != NULL && match->right == NULL)
+        {
+            left == true ? parent->left = match->left : parent->right = match->left;
+            match->left = NULL;
+            delPtr = match;
+            delete delPtr;
+            cout<<"The node containing data: "<<matchData<<" was deleted!\n\n";
+        }
+        //case parent has two child
+        else
+        {
+            smallestInRightSide = findSmallestPrivate(match->right);
+            removeNodePrivate(smallestInRightSide, match);
+            match->data = smallestInRightSide;
+        }
+    } else
+    {
+        cout<<"Cannot remove match. The tree is empty!\n";
+    }
+}
