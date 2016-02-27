@@ -5,6 +5,7 @@ class BST
 {
 public:
     BST();
+    ~BST();
     void addLeaf(int data);
     void printInOrder();
     int returnRootData();
@@ -30,6 +31,7 @@ private:
     int findSmallestPrivate(node* nodePtr);
     void removeNodePrivate(int data, node* parent);
     void removeMatch(node* parent, node* match, bool);
+    void removeSubTree(node* nodePtr);
 };
 
 #endif

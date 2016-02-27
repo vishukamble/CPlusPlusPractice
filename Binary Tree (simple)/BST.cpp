@@ -303,3 +303,26 @@ void BST::removeMatch(node* parent, node* match, bool left)
         cout<<"Cannot remove match. The tree is empty!\n";
     }
 }
+
+/*-----------------Deconstructor---------------------*/
+BST::~BST()
+{
+    removeSubTree(root);
+}
+
+void BST::removeSubTree(node* nodePtr)
+{
+    if(nodePtr != NULL)
+    {
+        if(nodePtr->left != NULL)
+        {
+            removeSubTree(nodePtr->left);
+        }
+        if(nodePtr->right != NULL)
+        {
+            removeSubTree(nodePtr->right);
+        }
+        cout<<"Currently deleting: "<<nodePtr->data<<endl;
+        delete nodePtr;
+    }
+}
