@@ -18,22 +18,26 @@ int main()
 	}
 	while (ans == 'y')
 	{
-		cout << "\nWhat do you wanna do?\n1. Add an element in middle (position, data)\n2. Delete elements\n3. Print elements\n";
+		cout << "\nWhat do you wanna do?\n1. Add an element in middle\n2. Delete elements\n3. Print elements\n";
 		cin >> opt;
 		switch (opt)
 		{
 		case 1:
+			cout << "\nHere is the list. Refer this list while adding:\n";
+			list.printList();
 			cout << "\nEnter position and data in which you want to add: ";
 			cin >> pos >> num;
 			list.addDataMiddle(pos, num);
 			list.printList();
+			num = 0; pos = 0;
 			break;
 		case 2:
-			cout << "\nHere is the list. Refer this list while deleting: ";
+			cout << "\nHere is the list. Refer this list while deleting:\n";
 			list.printList();
-			cout << "\nEnter data you want to delete: ";
+			cout << "Enter data you want to delete: ";
 			cin >> num;
 			list.deleteData(num);
+			list.printList();
 			break;
 		case 3:
 			list.printList();
