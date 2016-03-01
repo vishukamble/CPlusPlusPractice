@@ -1,0 +1,54 @@
+Enter number of elements you want in linked list: 4
+Enter element at index: 0: 12
+Enter element at index: 1: 24
+Enter element at index: 2: 36
+Enter element at index: 3: 48
+
+What do you wanna do?
+1. Add an element in middle
+2. Delete elements
+3. Print elements
+1
+
+Here is the list. Refer this list while deleting:
+0       1       2       3
+12      24      36      48
+
+Enter position and data in which you want to add: 3 85
+0       1       2       3       4
+12      24      36      85      48
+Do you want to do any more operations or exit?
+Press 'y' to continue or 'n' to exit: y
+
+What do you wanna do?
+1. Add an element in middle
+2. Delete elements
+3. Print elements
+2
+
+Here is the list. Refer this list while deleting:
+0       1       2       3       4
+12      24      36      85      48
+Enter data you want to delete: 24
+Deleted element: 24 !!
+0       1       2       3
+12      36      85      48
+Do you want to do any more operations or exit?
+Press 'y' to continue or 'n' to exit: y
+
+What do you wanna do?
+1. Add an element in middle
+2. Delete elements
+3. Print elements
+1
+
+Here is the list. Refer this list while deleting:
+0       1       2       3
+12      36      85      48
+
+Enter position and data in which you want to add: 0 400
+0       1       2       3       4
+400     12      36      85      48
+Do you want to do any more operations or exit?
+Press 'y' to continue or 'n' to exit: n
+Press any key to continue . . .
