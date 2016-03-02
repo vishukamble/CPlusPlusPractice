@@ -5,7 +5,7 @@ using namespace std;
 int main()
 {
 	LinkedList list;
-	int numElements, num, opt, x , pos, del;
+	int numElements, num, opt, x , pos;
 	char ans = 'y';
 	bool flag = false;
 	cout << "Enter number of elements you want in linked list: ";
@@ -18,7 +18,8 @@ int main()
 	}
 	while (ans == 'y')
 	{
-		cout << "\nWhat do you wanna do?\n1. Add an element in middle\n2. Delete elements\n3. Print elements\n";
+		cout << "\nWhat do you wanna do?\n1. Add an element in middle\n2. Delete elements\n3. Print elements\n"
+			<< "4. Check duplicate data!" << endl;
 		cin >> opt;
 		switch (opt)
 		{
@@ -42,6 +43,11 @@ int main()
 		case 3:
 			list.printList();
 			break;
+		case 4:
+			list.printList();
+			list.removeDuplicate();
+			cout << "List is now: " << endl;
+			list.printList();
 		default:
 			cout << "\nPlease select from the options! " << endl;
 			break;

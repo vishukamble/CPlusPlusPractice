@@ -52,3 +52,36 @@ Enter position and data in which you want to add: 0 400
 Do you want to do any more operations or exit?
 Press 'y' to continue or 'n' to exit: n
 Press any key to continue . . .
+
+//duplicate operation
+Enter number of elements you want in linked list: 9
+Enter element at index: 0: 12
+Enter element at index: 1: 24
+Enter element at index: 2: 36
+Enter element at index: 3: 12
+Enter element at index: 4: 25
+Enter element at index: 5: 96
+Enter element at index: 6: 87
+Enter element at index: 7: 36
+Enter element at index: 8: 24
+
+What do you wanna do?
+1. Add an element in middle
+2. Delete elements
+3. Print elements
+4. Check duplicate data!
+4
+0       1       2       3       4       5       6       7       8
+12      24      36      12      25      96      87      36      24
+Duplicate item found: 12
+Deleted: 12
+Duplicate item found: 24
+Deleted: 24
+Duplicate item found: 36
+Deleted: 36
+List is now:
+0       1       2       3       4       5
+12      24      36      25      96      87
+
+Please select from the options!
+Do you want to do any more operations or exit?

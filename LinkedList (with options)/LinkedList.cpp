@@ -33,7 +33,6 @@ void LinkedList::addDataMiddle(int pos, int data)
 {
 	nodePtr n = new node(); //create new node and add data to that node
 	n->data = data;
-	temp = head; //temp pointer to keep hold of head 
 	int position = 0;
 	if (pos == 0) //if you wanna add at the front of the linkedlist
 	{
@@ -42,17 +41,17 @@ void LinkedList::addDataMiddle(int pos, int data)
 	}
 	else if (head != NULL)
 	{
+		temp = head; //temp pointer to stay behind curr, to add elements in middle (temp -> new -> current)
 		curr = head; //start from head
 		while (curr->next != NULL && position != pos) //go until last
 		{
 			temp = curr;
 			curr = curr->next;
-			position++;
+			++position;
 		}
 		temp->next = n;
 		n->next = curr; //last node will now point to new node
 	}
-
 }
 
 void LinkedList::deleteData(int data)
@@ -94,9 +93,50 @@ void LinkedList::printList()
 	int count = 0; //counter to help uer manipulate list
 	while (curr != NULL) //traverse whole list
 	{
-		cout << count++ <<"\t"<<curr->data<<endl; //show index and data at that index
+		cout << count++ <<"\t"; //print index
 		curr = curr->next; //move to next 
-		
+	}
+	curr = head; //make current head again
+	cout << endl;//go to next line
+	while (curr != NULL) //traverse whole list
+	{
+		cout << curr->data << "\t"; //print data
+		curr = curr->next; //move to next 
 	}
 	cout << endl;
+}
+
+void LinkedList::removeDuplicatePrivate(node* head)
+{
+	nodePtr curr, temp, dup;
+	curr = head;
+
+	while (curr != NULL && curr->next != NULL)
+	{
+		temp = curr; //we'll iterate through the loop with temp and keep curr constant
+		while (temp->next != NULL) //do until last element
+		{
+			if (curr->data == temp->next->data) //check the next node's data
+			{
+				dup = temp->next;//store the duplicate element
+				cout << "Duplicate item found: " << dup->data << endl; //print it
+				if (temp->next != NULL) //if it is not thelast element (to avoid null pointer)
+				{
+					temp->next = temp->next->next; //skip duplicate (if it is last element this will give null pointer)
+				}
+				cout << "Deleted: " << dup->data << endl;
+				free(dup);
+			} else //make temp go to next node (curr will be same since we're checking with curr)
+			{
+				temp = temp->next; 
+			}
+		}
+		curr = curr->next; //if all elements don't match, move curr to next and check all elements
+	}
+}
+	
+
+void LinkedList::removeDuplicate()
+{
+	removeDuplicatePrivate(head);
 }

@@ -14,6 +14,7 @@ private:
 	nodePtr head;
 	nodePtr tail;
 	nodePtr temp;
+	void removeDuplicatePrivate(node* head);
 
 public:
 	LinkedList();
@@ -21,7 +22,7 @@ public:
 	void deleteData(int data);
 	void printList();
 	void addDataMiddle(int pos, int data);
-
+	void removeDuplicate();
 };
 
 
