@@ -14,7 +14,7 @@ void LinkedList::addData(int data)
 	nodePtr n = new node(); //create new node and add data to that node
 	n->next = NULL;
 	n->data = data;
-	 //traverse through the list
+	//traverse through the list
 	if (head != NULL)
 	{
 		curr = head; //start from head
@@ -38,8 +38,7 @@ void LinkedList::addDataMiddle(int pos, int data)
 	{
 		n->next = head;
 		head = n;
-	}
-	else if (head != NULL)
+	} else if (head != NULL)
 	{
 		temp = head; //temp pointer to stay behind curr, to add elements in middle (temp -> new -> current)
 		curr = head; //start from head
@@ -57,7 +56,7 @@ void LinkedList::addDataMiddle(int pos, int data)
 void LinkedList::deleteData(int data)
 {
 	nodePtr delPtr = NULL; //pointer to node we will delete
-	curr = head; 
+	curr = head;
 	if (head->data == data) //if data is in head itself
 	{
 		curr = head->next; //store 2nd node in current
@@ -89,11 +88,12 @@ void LinkedList::deleteData(int data)
 
 void LinkedList::printList()
 {
+	cout << "Our current list is :" << endl;
 	curr = head; //store head in curr to irerate
 	int count = 0; //counter to help uer manipulate list
 	while (curr != NULL) //traverse whole list
 	{
-		cout << count++ <<"\t"; //print index
+		cout << count++ << "\t"; //print index
 		curr = curr->next; //move to next 
 	}
 	curr = head; //make current head again
@@ -128,15 +128,62 @@ void LinkedList::removeDuplicatePrivate(node* head)
 				free(dup);
 			} else //make temp go to next node (curr will be same since we're checking with curr)
 			{
-				temp = temp->next; 
+				temp = temp->next;
 			}
 		}
 		curr = curr->next; //if all elements don't match, move curr to next and check all elements
 	}
 }
-	
 
 void LinkedList::removeDuplicate()
 {
 	removeDuplicatePrivate(head);
+}
+
+void LinkedList::reverse()
+{
+	nodePtr current = head; //node holding current value
+	nodePtr prev = NULL; //node to store list in reverse
+	nodePtr nextNode; //temp node to hold value when you rbeak the link
+	while (current != NULL)
+	{
+		nextNode = current->next; //store the address of next node (since we will be breaking this)
+		current->next = prev; //reverse the current node to point at previous node
+		prev = current; //move previous to the current node
+		current = nextNode; //move current to its next node, which we stored in the first line of this loop
+	}
+	head = prev; //make last node the first one
+	printList();
+}
+
+void LinkedList::printRecuresivePrivate(node* head)
+{
+	if (head == NULL)
+		return; ///break condition
+	cout << head->data << "\t"; //print data
+	printRecuresivePrivate(head->next); //go until last
+
+}
+void LinkedList::printRecuresiveReversePrivate(node* head)
+{
+	if (head == NULL)
+		return;
+	printRecuresiveReversePrivate(head->next); //go until last
+	cout << head->data << "\t"; //print data
+
+}
+void LinkedList::printRecuresive()
+{
+	cout << "1. Forward\t2.Reverse?: ";
+	int opt;
+	cin >> opt;
+	if (opt == 1)
+		printRecuresivePrivate(head);
+	else if (opt == 2)
+		printRecuresiveReversePrivate(head);
+	else
+	{
+		cout << "Wrong option!"<<endl;
+		printRecuresive();
+	}
 }

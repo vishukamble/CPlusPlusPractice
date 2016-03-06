@@ -15,6 +15,8 @@ private:
 	nodePtr tail;
 	nodePtr temp;
 	void removeDuplicatePrivate(node* head);
+	void printRecuresivePrivate(node* head);
+	void printRecuresiveReversePrivate(node* head);
 
 public:
 	LinkedList();
@@ -23,6 +25,8 @@ public:
 	void printList();
 	void addDataMiddle(int pos, int data);
 	void removeDuplicate();
+	void reverse();
+	void printRecuresive();
 };
 
 

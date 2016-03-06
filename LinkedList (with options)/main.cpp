@@ -18,8 +18,8 @@ int main()
 	}
 	while (ans == 'y')
 	{
-		cout << "\nWhat do you wanna do?\n1. Add an element in middle\n2. Delete elements\n3. Print elements\n"
-			<< "4. Check duplicate data!" << endl;
+		cout << "\nWhat do you wanna do?\n1. Add an element in middle\n2. Delete elements\n3. "<<
+			"Print elements\n4. Check duplicate data\n5. Reverse the List\n6. Print Recursive" << endl;
 		cin >> opt;
 		switch (opt)
 		{
@@ -48,11 +48,19 @@ int main()
 			list.removeDuplicate();
 			cout << "List is now: " << endl;
 			list.printList();
+		case 5:
+			list.printList();
+			list.reverse();
+			break;
+		case 6: 
+			list.printList();
+			list.printRecuresive();
+			break;
 		default:
 			cout << "\nPlease select from the options! " << endl;
 			break;
 		}
-		cout << "Do you want to do any more operations or exit?\nPress 'y' to continue or 'n' to exit: ";
+		cout << "\nDo you want to do any more operations or exit?\nPress 'y' to continue or 'n' to exit: ";
 		cin >> ans;
 	}
 	system("pause");

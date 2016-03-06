@@ -53,6 +53,8 @@ Do you want to do any more operations or exit?
 Press 'y' to continue or 'n' to exit: n
 Press any key to continue . . .
 
+-------------------------------------------------------------------------
+
 //duplicate operation
 Enter number of elements you want in linked list: 9
 Enter element at index: 0: 12
@@ -85,3 +87,67 @@ List is now:
 
 Please select from the options!
 Do you want to do any more operations or exit?
+
+-------------------------------------------------------------------------
+
+//recursive printing and reversing the list
+Enter number of elements you want in linked list: 9
+Enter element at index: 0: 36
+Enter element at index: 1: 25
+Enter element at index: 2: 14
+Enter element at index: 3: 96
+Enter element at index: 4: 85
+Enter element at index: 5: 74
+Enter element at index: 6: 32
+Enter element at index: 7: 21
+Enter element at index: 8: 65
+
+What do you wanna do?
+1. Add an element in middle
+2. Delete elements
+3. Print elements
+4. Check duplicate data
+5. Reverse the List
+6. Print Recursive
+6
+Our current list is :
+0       1       2       3       4       5       6       7       8
+36      25      14      96      85      74      32      21      65
+1. Forward      2.Reverse?: 2
+65      21      32      74      85      96      14      25      36
+Do you want to do any more operations or exit?
+Press 'y' to continue or 'n' to exit: y
+
+What do you wanna do?
+1. Add an element in middle
+2. Delete elements
+3. Print elements
+4. Check duplicate data
+5. Reverse the List
+6. Print Recursive
+6
+Our current list is :
+0       1       2       3       4       5       6       7       8
+36      25      14      96      85      74      32      21      65
+1. Forward      2.Reverse?: 1
+36      25      14      96      85      74      32      21      65
+Do you want to do any more operations or exit?
+Press 'y' to continue or 'n' to exit: y
+
+What do you wanna do?
+1. Add an element in middle
+2. Delete elements
+3. Print elements
+4. Check duplicate data
+5. Reverse the List
+6. Print Recursive
+5
+Our current list is :
+0       1       2       3       4       5       6       7       8
+36      25      14      96      85      74      32      21      65
+Our current list is :
+0       1       2       3       4       5       6       7       8
+65      21      32      74      85      96      14      25      36
+
+Do you want to do any more operations or exit?
+Press 'y' to continue or 'n' to exit: n
