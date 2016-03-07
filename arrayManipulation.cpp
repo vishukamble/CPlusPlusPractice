@@ -12,24 +12,38 @@ using namespace std;
 
 int main()
 {
-    int arr[]={1,0,3,4,0,0,-2,0,0,8};
-    int n = (sizeof(arr)/sizeof(arr[0]));
-    for(int i=0; i<n; i++)
-    {
-        for(int j=i+1; j<n; j++)
-        {
-            if(arr[i]==0 && arr[j]!=0)
-            {
-                int temp = arr[i];
-                arr[i]=arr[j];
-                arr[j] = temp;
-            }
-        }
-    }
-        for(int i=0; i<n; i++)
-    {
-        cout<<arr[i]<<" ";
-    }
-    cout<<endl;
-    return 0;
+    int main()
+{
+	int arr[] = { 0, 1,5,0,0,5,0,7 };
+	int len = sizeof(arr) / sizeof(arr[0]);
+	int nonzero = 0;
+	for (int i = 0; i < len; i++)
+	{
+		if (arr[i] != 0)
+			nonzero++;
+	}
+	for (int i = 0; i < len; i++)
+	{
+		for (int j = i + 1; j < len; j++)
+		{
+			if (arr[i] == 0 && arr[j] != 0)
+			{
+				arr[i] = arr[j];
+				arr[j] = 0;
+				nonzero--;
+			} 
+		}
+		if (nonzero == 0)
+			break;
+	}
+
+	for (int i = 0; i < len; i++)
+	{
+		cout << arr[i] << " ";
+	}
+	cout << endl;
+	system("pause");
+	return 0;
+}
+
 }
