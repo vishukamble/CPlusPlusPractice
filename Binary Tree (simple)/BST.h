@@ -13,6 +13,7 @@ public:
     int findSmallestData();
     void removeRootMatch();
     void removeNode(int data);
+	void printThree();
 
 private:
     struct node //base of tress. one to hold value 2 pointers to point
@@ -32,6 +33,9 @@ private:
     void removeNodePrivate(int data, node* parent);
     void removeMatch(node* parent, node* match, bool);
     void removeSubTree(node* nodePtr);
+	void inOrder(node*root);
+	void preOrder(node*root);
+	void postOrder(node*root);
 };
 
 #endif

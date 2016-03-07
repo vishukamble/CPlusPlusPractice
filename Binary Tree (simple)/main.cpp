@@ -54,8 +54,10 @@ int main()
             cout<<endl;
         }
     }
-
-
+	cout << "Print trees: " << endl;
+	cout << "InOrder: " << endl;
+	myTree.printThree();
+	system("pause");
     return 0;
 }
 

@@ -326,3 +326,42 @@ void BST::removeSubTree(node* nodePtr)
         delete nodePtr;
     }
 }
+void BST::printThree()
+{
+	cout << "Inorder = " << endl;
+	inOrder(root);
+	cout << "\nPreorder = " << endl;
+	preOrder(root);
+	cout << "\nPostorder = " << endl;
+	postOrder(root);
+}
+
+void BST::inOrder(node*root)
+{
+	if (root != NULL)
+	{
+		if (root->left != NULL)
+			inOrder(root->left);
+		cout << root->data << " ";
+		if (root->right != NULL)
+			inOrder(root->right);
+	}
+}
+void BST::preOrder(node*root)
+{
+	if (root == NULL)
+		return;
+	cout << root->data << " ";
+	preOrder(root->left);
+	preOrder(root->right);
+
+}
+void BST::postOrder(node*root)
+{
+	if (root != NULL)
+	{
+		postOrder(root->left);
+		postOrder(root->right);
+		cout<<root->data<<" ";
+	}
+}
